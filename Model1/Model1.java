@@ -1,3 +1,4 @@
+package Model1;
 import java.text.ListFormat.Style;
 import java.util.Scanner;
 
