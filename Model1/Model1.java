@@ -1,13 +1,13 @@
 package Model1;
+
 import java.text.ListFormat.Style;
 import java.util.Scanner;
 
 public class Model1 {
-    public void Start() {
-        // Attributes
-        boolean run = true;
-        String[] input;
+    protected boolean run = true;
+    protected String[] input;
 
+    public void Start() {
         System.out.println();
         Scanner sc = new Scanner(System.in);
         System.out.print("Insert Function: ");
