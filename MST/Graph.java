@@ -35,6 +35,13 @@ public class Graph {
         }
     }
 
+    public Edge getEdge(String name){
+        return edges.get(name);
+    }
+
+    public Vertex getVertex(String name){
+        return vertices.get(name);
+    }
 
     public java.util.Collection<Edge> getEdges() {
         return edges.values();
