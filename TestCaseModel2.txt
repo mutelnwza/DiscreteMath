@@ -1,0 +1,9 @@
+A B C D E
+7
+e0 2 A B
+e1 6 A D
+e2 9 D E
+e3 7 C E
+e4 3 B C
+e5 5 B E
+e6 8 B D
