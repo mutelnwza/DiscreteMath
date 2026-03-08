@@ -1,44 +1,53 @@
+package Model1;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 
-public class Prefix {
-
+public class Postfix {
     private final Deque<String> input;
     private final Deque<String> result;
     private final Deque<String> stack;
 
-    public Prefix(ArrayList<String> expressions) {
+    public Postfix(ArrayList<String> expressions) {
         this.input = new ArrayDeque<>(expressions);
         this.stack = new ArrayDeque<>();
         this.result = new ArrayDeque<>();
-
         calculate();
     }
 
     private void calculate() {
         while (!input.isEmpty()) {
-            String e = input.removeLast();
+            String e = input.removeFirst();
+
             switch (e) {
                 case "-", "+" -> {
-                    while (!stack.isEmpty() && (stack.peek().equals("/") || stack.peek().equals("*"))) {
-                        result.push(stack.pop());
+                    while (!stack.isEmpty() && (stack.peek().equals("/") || stack.peek().equals("*")
+                            || stack.peek().equals("+") || stack.peek().equals("-"))) {
+                        result.addLast(stack.pop());
                     }
                     stack.push(e);
                 }
-                case "*", "/" ->
+                case "*", "/" -> {
+                    while (!stack.isEmpty() && (stack.peek().equals("/") || stack.peek().equals("*"))) {
+                        result.addLast(stack.pop());
+                    }
                     stack.push(e);
+                }
                 default ->
-                    result.push(e);
+                    result.addLast(e);
             }
         }
         while (!stack.isEmpty()) {
-            result.push(stack.pop());
+            result.addLast(stack.pop());
         }
     }
 
     public void show() {
         result.forEach(System.out::print);
+    }
+
+    public Deque<String> getOutput() {
+        return result;
     }
 }

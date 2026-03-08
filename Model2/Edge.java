@@ -1,4 +1,4 @@
-package MST;
+package Model2;
 
 public class Edge {
     private final String name;

@@ -1,4 +1,4 @@
-package MST;
+package Model2;
 
 import java.util.ArrayList;
 
