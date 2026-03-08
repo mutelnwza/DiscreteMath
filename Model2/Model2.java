@@ -3,8 +3,11 @@ package Model2;
 import java.util.Scanner;
 
 public class Model2 {
+
     protected Graph g = new Graph();
     protected boolean run = true;
+
+    private final GraphChecker graphChecker = new GraphChecker();
 
     public void Start() {
         Scanner sc = new Scanner(System.in); // Adding Vertex names
@@ -25,27 +28,39 @@ public class Model2 {
             g.addConnection(connections[0], Integer.parseInt(connections[1]), connections[2], connections[3]);
         }
 
-        System.out.println("What do you want Goshujinsama\n\t1.smth\n\t2.smth\n\t3.Check Something\n\t4.Exit");
+        boolean isConnected = graphChecker.isConnected(g);
+        InputGraphPath inputGraphPath = new InputGraphPath(sc, g);
 
-        int input = Integer.MIN_VALUE;
+        System.out.println("What do you want\n\t1.SHOW KRUSKAL MST\n\t2.SHOW PRIM MST\n\t3.INPUT ROUTE AND CHECK IF IT'S A SPANNING TREE\n\t4.EXIT");
+
+        int input;
+
         while (run) {
             System.out.print("Insert Number: ");
             input = sc.nextInt();
             System.out.println();
             switch (input) {
-                case 1:
+                case 1 -> {
+                    if (!isConnected) {
+                        System.out.println("Graph is not connected");
+                        break;
+                    }
                     Kruskal.findMST(g);
-                    break;
-                case 2:
+                }
+                case 2 -> {
+                    if (!isConnected) {
+                        System.out.println("Graph is not connected");
+                        break;
+                    }
                     Prim prim = new Prim(g, "B");
                     prim.printMST();
-                    break;
-                case 3:
-                    System.out.println("IDK ASK YOU");
-                    break;
-                case 4:
+                }
+                case 3 -> //input route
+                {
+                    inputGraphPath.check();
+                }
+                case 4 ->
                     run = false;
-                    break;
             }
         }
         sc.close();

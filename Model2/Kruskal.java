@@ -1,17 +1,15 @@
 package Model2;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Comparator;
-import java.util.List;
+import java.util.HashMap;
 
 public class Kruskal {
 
     public static ArrayList<Edge> findMST(Graph graph) {
-
         ArrayList<Edge> result = new ArrayList<>();
+        ArrayList<Edge> edges = new ArrayList<>(graph.getEdges());
 
-        List<Edge> edges = new ArrayList<>(graph.getEdges());
         edges.sort(Comparator.comparingInt(Edge::getWeight));
 
         HashMap<String, String> parent = new HashMap<>();
