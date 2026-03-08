@@ -8,6 +8,9 @@ public class Main {
         ArrayList<String> a = new ArrayList<>(Arrays.asList(arr));
         ArrayList<String> a2 = new ArrayList<>(Arrays.asList(arr2));
         Prefix p = new Prefix(a2);
+        Postfix post = new Postfix(a2);
+        post.show();
+        System.out.println();
         p.show();
     }
 }
