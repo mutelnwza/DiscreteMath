@@ -26,19 +26,24 @@ public class Model1 {
             System.out.println();
             switch (select) {
                 case "1":
-                    ArrayList<String> list = new ArrayList<>(Arrays.asList(input));
-                    Prefix p = new Prefix(list);
-                    p.show();
+                    ArrayList<String> list1 = new ArrayList<>(Arrays.asList(input));
+                    Prefix prefix = new Prefix(list1);
+                    prefix.show();
                     break;
                 case "2":
                     Infix.print(input);
                     break;
                 case "3":
-                    System.out.println("Something About Postfix");
+                    ArrayList<String> list2 = new ArrayList<>(Arrays.asList(input));
+                    Postfix postfix = new Postfix(list2);
+                    postfix.show();
                     break;
                 case "4":
                     System.out.println("HERE STEP BY STEP:");
-                    Calculate.PostCal(input); // PLSSSSSSSSSSSSSSSSSSSSSSSSS DO SMTH I DO NOT KNOW HOW TO POSTFIX
+                    ArrayList<String> list3 = new ArrayList<>(Arrays.asList(input));
+                    Postfix postfix2 = new Postfix(list3);
+                    String[] arr = postfix2.getOutput().toArray(new String[0]);
+                    Calculate.PostCal(arr); // PLSSSSSSSSSSSSSSSSSSSSSSSSS DO SMTH I DO NOT KNOW HOW TO POSTFIX
                     break;
                 case "5":
                     run = false;
