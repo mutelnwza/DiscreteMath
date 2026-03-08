@@ -1,24 +1,60 @@
 package MST;
 
+import java.util.Scanner;
+
 public class main {
     public static void main(String[] args) {
-        Graph g = new Graph();
+        Scanner sc = new Scanner(System.in);
+        Graph graph = null;
+        InputGraph ig = new InputGraph(sc);
 
-        g.addVertex(new Vertex("A"));
-        g.addVertex(new Vertex("B"));
-        g.addVertex(new Vertex("C"));
-        g.addVertex(new Vertex("D"));
-        g.addVertex(new Vertex("E"));
+        while(true) {
+            System.out.println("\nmenu");
+            System.out.println("1. input Graph");
+            System.out.println("2. check Connectivity");
+            System.out.println("3. Find MST (Prim)");
+            System.out.println("0. Exit");
+            System.out.print("choose: ");
 
-        g.addConnection("e0", 2, "A", "B");
-        g.addConnection("e1", 6, "A", "D");
-        g.addConnection("e2", 9, "D", "E");
-        g.addConnection("e3", 7, "C", "E");
-        g.addConnection("e4", 3, "B", "C");
-        g.addConnection("e5", 5, "B", "E");
-        g.addConnection("e6", 8, "B", "D");
+            String choice = sc.nextLine().trim();
 
-        Prim prim = new Prim(g, "B");
-        prim.printMST();
+            if(choice.equals("1")) {
+                graph = ig.buildGraph();
+
+            } else if(choice.equals("2")) {
+                if(graph == null) {
+                    System.out.println("You have to input graph first.");
+                    continue;
+                }
+                GraphChecker gc = new GraphChecker();
+                gc.printResult(graph);
+
+            } else if(choice.equals("3")) {
+                if(graph == null) {
+                    System.out.println("You have to input graph first.");
+                    continue;
+                }
+                GraphChecker gc = new GraphChecker();
+                if(!gc.isConnected(graph)) {
+                    System.out.println("graph isn't connected.");
+                    continue;
+                }
+                System.out.print("input start vertex: ");
+                String start = sc.nextLine().trim();
+                if(graph.getVertex(start) == null) {
+                    System.out.println("this vertex didn't exist.");
+                    continue;
+                }
+                Prim p = new Prim(graph, start);
+                p.printMST();
+
+            } else if(choice.equals("0")) {
+                break;
+
+            } else {
+                System.out.println("choose again");
+            }
+        }
+        sc.close();
     }
 }
