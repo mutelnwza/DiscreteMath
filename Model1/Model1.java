@@ -1,6 +1,8 @@
 package Model1;
 
 import java.text.ListFormat.Style;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Model1 {
@@ -24,7 +26,9 @@ public class Model1 {
             System.out.println();
             switch (select) {
                 case "1":
-                    System.out.println("Something About Prefix");
+                    ArrayList<String> list = new ArrayList<>(Arrays.asList(input));
+                    Prefix p = new Prefix(list);
+                    p.show();
                     break;
                 case "2":
                     Infix.print(input);

@@ -1,4 +1,4 @@
-import Model1.Model1;
+import Model1.*;
 import Model2.*;
 
 public class Main {

@@ -1,6 +1,9 @@
 package Model2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Comparator;
+import java.util.List;
 
 public class Kruskal {
 
@@ -57,5 +60,6 @@ public class Kruskal {
 
         System.out.println("--------------------------");
         System.out.println("Total Weight: " + total);
+
     }
 }

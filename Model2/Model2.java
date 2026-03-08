@@ -7,15 +7,17 @@ public class Model2 {
     protected boolean run = true;
 
     public void Start() {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); // Adding Vertex names
         System.out.print("Insert Vertex: ");
         String[] vertex = sc.nextLine().split("\\s+");
         for (String string : vertex) {
             g.addVertex(new Vertex(string));
         }
 
-        System.out.print("How Many Connections: ");
+        System.out.print("How Many Connections: "); // How many connections?
         int a = sc.nextInt();
+
+        // Adding Conections
         System.out.println("Add Connections (Name Weight Vertex1 Vertex2)\nExample: e0 5 A B");
         sc.nextLine();
         for (int i = 0; i < a; i++) {
@@ -46,6 +48,6 @@ public class Model2 {
                     break;
             }
         }
-
+        sc.close();
     }
 }
