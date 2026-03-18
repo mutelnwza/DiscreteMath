@@ -24,18 +24,18 @@ public class Prefix {
             switch (e) {
                 case "-", "+" -> {
                     while (!stack.isEmpty() && (stack.peek().equals("/") || stack.peek().equals("*"))) {
-                        result.push(stack.pop());
+                        result.addFirst(stack.pop());
                     }
                     stack.push(e);
                 }
                 case "*", "/" ->
                     stack.push(e);
                 default ->
-                    result.push(e);
+                    result.addFirst(e);
             }
         }
         while (!stack.isEmpty()) {
-            result.push(stack.pop());
+            result.addFirst(stack.pop());
         }
     }
 

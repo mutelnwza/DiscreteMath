@@ -34,13 +34,18 @@ public class Prim {
 
         while (visited.size() < verticesCount) {
             remainingEdges.addAll(start.getEdges());
-            Edge edge;
-            while ((edge = remainingEdges.poll()) != null) {
-                if ((start = getNotVisitedVertex(edge)) != null) {
-                    visited.add(start);
-                    mst.add(edge);
-                    break;
-                }
+
+            Edge edge = remainingEdges.poll();
+            if (edge == null) {
+                break;
+            }
+
+            Vertex next = getNotVisitedVertex(edge);
+
+            if (next != null) {
+                visited.add(next);
+                mst.add(edge);
+                start = next;
             }
         }
     }

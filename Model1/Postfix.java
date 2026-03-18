@@ -26,13 +26,13 @@ public class Postfix {
                             || stack.peek().equals("+") || stack.peek().equals("-"))) {
                         result.addLast(stack.pop());
                     }
-                    stack.push(e);
+                    stack.addFirst(e);
                 }
                 case "*", "/" -> {
                     while (!stack.isEmpty() && (stack.peek().equals("/") || stack.peek().equals("*"))) {
                         result.addLast(stack.pop());
                     }
-                    stack.push(e);
+                    stack.addFirst(e);
                 }
                 default ->
                     result.addLast(e);

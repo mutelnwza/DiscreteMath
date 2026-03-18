@@ -3,13 +3,14 @@ package Model2;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Kruskal {
 
     public static ArrayList<Edge> findMST(Graph graph) {
         ArrayList<Edge> result = new ArrayList<>();
         ArrayList<Edge> edges = new ArrayList<>(graph.getEdges());
-
+        
         edges.sort(Comparator.comparingInt(Edge::getWeight));
 
         HashMap<String, String> parent = new HashMap<>();
@@ -19,16 +20,22 @@ public class Kruskal {
         }
 
         for (Edge edge : edges) {
-
+        
             Vertex[] vs = edge.getVertices();
             String root1 = find(parent, vs[0].getName());
             String root2 = find(parent, vs[1].getName());
-
+        
             if (!root1.equals(root2)) {
                 result.add(edge);
                 parent.put(root1, root2);
             }
         }
+        
+        System.out.println("--- Kruskal MST Result ---");
+        for(Map.Entry<String,String> entry : parent.entrySet()){
+            System.out.println("Parent and child: "+entry.getKey()+" "+entry.getValue());
+        }
+
         printMST(result);
         return result;
     }
@@ -41,7 +48,6 @@ public class Kruskal {
     }
 
     public static void printMST(ArrayList<Edge> mst) {
-        System.out.println("--- Kruskal MST Result ---");
 
         int total = 0;
 
