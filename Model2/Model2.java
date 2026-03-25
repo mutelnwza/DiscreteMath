@@ -31,7 +31,7 @@ public class Model2 {
         boolean isConnected = graphChecker.isConnected(g);
         InputGraphPath inputGraphPath = new InputGraphPath(sc, g);
 
-        System.out.println("What do you want\n\t1.SHOW KRUSKAL MST\n\t2.SHOW PRIM MST\n\t3.INPUT ROUTE AND CHECK IF IT'S A SPANNING TREE\n\t4.EXIT");
+        System.out.println("What do you want\n\t1.SHOW KRUSKAL MST\n\t2.SHOW PRIM MST\n\t3.INPUT ROUTE AND CHECK IF IT'S A SPANNING TREE\n\t4.SHOW DIJKSTRA\n\t5.EXIT");
 
         int input;
 
@@ -59,7 +59,15 @@ public class Model2 {
                 {
                     inputGraphPath.check();
                 }
-                case 4 ->
+                case 4 -> {
+                    if (!isConnected) {
+                        System.out.println("Graph is not connected");
+                        break;
+                    }
+                    Dijkstra.calculate(g, "1");
+                    break;
+                }
+                case 5 ->
                     run = false;
             }
         }
